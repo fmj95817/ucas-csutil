@@ -155,7 +155,7 @@ function query(path, courses, period) {
                         for (let course of params.coursesInfo) {
                             let len = params.coursesInfo.length;
                             let index = params.coursesInfo.indexOf(course) + 1;
-                            console.log(`课程${index}：课程名称：${course.courseName}`)
+                            console.log(`课程${index}：课程名称：${course.courseName}`);
                             console.log(`       课程代码：${course.courseCode}`);
                             console.log(`       开课单位：${course.courseDept}`);
                             console.log(`       限选：${course.limit} 人`);
@@ -177,11 +177,11 @@ function query(path, courses, period) {
                                             "zh-CN",
                                             {timeZone: "Asia/Shanghai"}
                                         ) }: ${successParams.msg}\n`);
-                                        let config = JSON.parse(fs.readFileSync('./.config'));
+                                        let config = JSON.parse(fs.readFileSync(`${__dirname}/.config`));
                                         let index = config.courseList.map(ele => ele.code).indexOf(successParams.courseCode);
                                         courses.splice(courses.map(ele => ele.courseCode).indexOf(successParams.courseCode), 1);
                                         config.courseList.splice(index, 1);
-                                        fs.writeFileSync('./.config', JSON.stringify(config));
+                                        fs.writeFileSync(`${__dirname}/.config`, JSON.stringify(config));
                                     },
                                     (failParams) => {
                                         console.log(`${ (new Date()).toLocaleString(
@@ -213,7 +213,7 @@ function query(path, courses, period) {
 function querySync() {
     let config;
     try {
-        config = JSON.parse(fs.readFileSync('./.config'));
+        config = JSON.parse(fs.readFileSync(`${__dirname}/.config`));
     } catch (e) {
         console.log('错误：需要初始化');
         return;
@@ -223,7 +223,7 @@ function querySync() {
         console.log('用法：csutil query');
     } else {
         if (config.courseList.length) {
-            query('./.params', config.courseList, 1800);
+            query(`${__dirname}/.params`, config.courseList, 1800);
         } else {
             console.log('错误：未添加课程');
         }

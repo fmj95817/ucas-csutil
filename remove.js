@@ -7,7 +7,7 @@ function remove() {
     } else {
         let config;
         try {
-            config = JSON.parse(fs.readFileSync('./.config'));
+            config = JSON.parse(fs.readFileSync(`${__dirname}/.config`));
         } catch (e) {
             console.log('错误：需要初始化');
             return;
@@ -19,7 +19,7 @@ function remove() {
                 let index = config.courseList.map(ele => ele.code).indexOf(argv.code);
                 if (index >= 0) {
                     config.courseList.splice(index, 1);
-                    fs.writeFileSync('./.config', JSON.stringify(config));
+                    fs.writeFileSync(`${__dirname}/.config`, JSON.stringify(config));
                     console.log(`代码为${argv.code}的课程已删除`);
                 } else {
                     console.log(`代码为${argv.code}的课程未添加`);
