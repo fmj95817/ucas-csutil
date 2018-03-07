@@ -223,7 +223,7 @@ function querySync() {
         console.log('用法：csutil query');
     } else {
         if (config.courseList.length) {
-            query('./.params', config.courseList, 5);
+            query('./.params', config.courseList, 1800);
         } else {
             console.log('错误：未添加课程');
         }
