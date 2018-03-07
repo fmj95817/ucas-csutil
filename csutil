@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+
+const init = require('./init');
+const login = require('./login');
+const query = require('./query');
+const configure = require('./config');
+const add = require('./add');
+const list = require('./list');
+const remove = require('./remove');
+
+
+switch (process.argv[2]) {
+    case 'init':
+        init();
+        break;
+
+    case 'config':
+        configure();
+        break;
+
+    case 'add':
+        add();
+        break;
+
+    case 'list':
+        list();
+        break;
+
+    case 'remove':
+        remove();
+        break;
+
+    case 'login':
+        login();
+        break;
+
+    case 'query':
+        query();
+        break;
+
+    default:
+        console.log('UCAS选课系统实用工具\n');
+        console.log('用法:\n    csutil <命令> [参数]\n');
+        console.log('可用的命令：');
+        console.log('    init\t初始化(执行其他命令之前必须先初始化)');
+        console.log('    config\t配置Sep系统用户名和密码');
+        console.log('    add\t\t添加课程');
+        console.log('    list\t显示需要选择的课程列表');
+        console.log('    remove\t移除某个需要选择的课程');
+        console.log('    login\t登录选课系统');
+        console.log('    query\t查询课程可选情况并适时提交选课\n');
+        console.log('执行 csutil <命令> -h 查看各命令的用法。\n');
+        console.log('向 azfmj22@hotmail.com 发送邮件报告bug。');
+        break;
+}
+
