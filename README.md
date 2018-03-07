@@ -1,6 +1,6 @@
-#UCAS 选课系统实用工具
+## UCAS 选课系统实用工具
 
-## 安装
+### 安装
 1. 安装node.js：
 	* Windows：从[node.js网站](https://nodejs.org/en/download/)下载合适的安装程序并安装。
 	* macOS：在终端执行命令
@@ -24,7 +24,7 @@
 	npm install -g csutil-ucas
 	```
 
-## 使用
+### 使用
 1. 初始化
 
 	```bash
