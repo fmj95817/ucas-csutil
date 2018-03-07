@@ -1,10 +1,10 @@
 {
-  "name": "ucas-csutil",
-  "version": "1.0.0",
+  "name": "csutil-ucas",
+  "version": "1.0.1",
   "description": "UCAS course selecting utilies",
   "main": "csutil",
   "bin": {
-   "snippet": "./csutil"
+    "csutil": "./csutil"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,14 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "yargs": "^11.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmj95817/ucas-csutil.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fmj95817/ucas-csutil/issues"
+  },
+  "homepage": "https://github.com/fmj95817/ucas-csutil#readme"
 }

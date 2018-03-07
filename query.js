@@ -177,11 +177,11 @@ function query(path, courses, period) {
                                             "zh-CN",
                                             {timeZone: "Asia/Shanghai"}
                                         ) }: ${successParams.msg}\n`);
-                                        let config = JSON.parse(fs.readFileSync('./config.json'));
+                                        let config = JSON.parse(fs.readFileSync('./.config'));
                                         let index = config.courseList.map(ele => ele.code).indexOf(successParams.courseCode);
                                         courses.splice(courses.map(ele => ele.courseCode).indexOf(successParams.courseCode), 1);
                                         config.courseList.splice(index, 1);
-                                        fs.writeFileSync('./config.json', JSON.stringify(config));
+                                        fs.writeFileSync('./.config', JSON.stringify(config));
                                     },
                                     (failParams) => {
                                         console.log(`${ (new Date()).toLocaleString(
@@ -213,7 +213,7 @@ function query(path, courses, period) {
 function querySync() {
     let config;
     try {
-        config = JSON.parse(fs.readFileSync('./config.json'));
+        config = JSON.parse(fs.readFileSync('./.config'));
     } catch (e) {
         console.log('错误：需要初始化');
         return;

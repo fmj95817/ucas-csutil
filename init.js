@@ -11,7 +11,7 @@ function init() {
             courseList: []
         };
 
-        fs.writeFileSync('./config.json', JSON.stringify(config));
+        fs.writeFileSync('./.config', JSON.stringify(config));
     }
 }
 

@@ -7,7 +7,7 @@ function list() {
     } else {
         let config;
         try {
-            config = JSON.parse(fs.readFileSync('./config.json'));
+            config = JSON.parse(fs.readFileSync('./.config'));
         } catch (e) {
             console.log('错误：需要初始化');
             return;

@@ -7,7 +7,7 @@ function config() {
     } else {
         let config;
         try {
-            config = JSON.parse(fs.readFileSync('./config.json'));
+            config = JSON.parse(fs.readFileSync('./.config'));
         } catch (e) {
             console.log('错误：需要初始化');
             return;
@@ -34,7 +34,7 @@ function config() {
             console.log('用法：csutil config [--username=Sep用户名] [--password=Sep密码]');
         }
 
-        fs.writeFileSync('./config.json', JSON.stringify(config));
+        fs.writeFileSync('./.config', JSON.stringify(config));
     }
 }
 
