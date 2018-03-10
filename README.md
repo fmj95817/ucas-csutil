@@ -21,7 +21,7 @@
 2. 安装本工具：执行命令
 
 	```bash
-	npm install -g csutil-ucas
+	npm install -g ucas-csutil
 	```
 
 ### 使用
