@@ -177,11 +177,11 @@ function query(path, courses, period) {
                                             "zh-CN",
                                             {timeZone: "Asia/Shanghai"}
                                         ) }: ${successParams.msg}\n`);
-                                        let config = JSON.parse(fs.readFileSync(`${__dirname}/.config`));
+                                        let config = JSON.parse(fs.readFileSync(`${os.homedir()}/.config`));
                                         let index = config.courseList.map(ele => ele.code).indexOf(successParams.courseCode);
                                         courses.splice(courses.map(ele => ele.courseCode).indexOf(successParams.courseCode), 1);
                                         config.courseList.splice(index, 1);
-                                        fs.writeFileSync(`${__dirname}/.config`, JSON.stringify(config));
+                                        fs.writeFileSync(`${os.homedir()}/.config`, JSON.stringify(config));
                                     },
                                     (failParams) => {
                                         console.log(`${ (new Date()).toLocaleString(
@@ -213,7 +213,7 @@ function query(path, courses, period) {
 function querySync() {
     let config;
     try {
-        config = JSON.parse(fs.readFileSync(`${__dirname}/.config`));
+        config = JSON.parse(fs.readFileSync(`${os.homedir()}/.config`));
     } catch (e) {
         console.log('错误：需要初始化');
         return;
@@ -223,7 +223,7 @@ function querySync() {
         console.log('用法：csutil query');
     } else {
         if (config.courseList.length) {
-            query(`${__dirname}/.params`, config.courseList, 1800);
+            query(`${os.homedir()}/.params`, config.courseList, 1800);
         } else {
             console.log('错误：未添加课程');
         }
