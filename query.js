@@ -2,6 +2,8 @@ const http = require('http');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const argv = require('yargs').argv;
+const os = require('os');
+
 
 function getCourseInfoPromise(params, courses) {
     return new Promise(

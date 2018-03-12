@@ -1,5 +1,6 @@
 const argv = require('yargs').argv;
 const fs = require('fs');
+const os = require('os');
 
 function remove() {
     if (argv.h) {

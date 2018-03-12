@@ -2,6 +2,8 @@ const querystring = require('querystring');
 const http = require('http');
 const fs = require('fs');
 const argv = require('yargs').argv;
+const os = require('os');
+
 
 function getLoginPagePromise() {
     return new Promise(

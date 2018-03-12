@@ -1,5 +1,6 @@
 const fs = require('fs');
 const argv = require('yargs').argv;
+const os = require('os');
 
 function init() {
     if (argv.h) {
