@@ -12,7 +12,7 @@ function init() {
             courseList: []
         };
 
-        fs.writeFileSync(`${os.homedir()}/.config`, JSON.stringify(config));
+        fs.writeFileSync(`${os.homedir()}/.csutilrc`, JSON.stringify(config));
     }
 }
 

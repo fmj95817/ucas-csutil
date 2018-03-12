@@ -8,7 +8,7 @@ function add() {
     } else {
         let config;
         try {
-            config = JSON.parse(fs.readFileSync(`${os.homedir()}/.config`));
+            config = JSON.parse(fs.readFileSync(`${os.homedir()}/.csutilrc`));
         } catch (e) {
             console.log('错误：需要初始化');
             return;
@@ -24,7 +24,7 @@ function add() {
                         dept: argv.dept,
                         code: argv.code
                     });
-                    fs.writeFileSync(`${os.homedir()}/.config`, JSON.stringify(config));
+                    fs.writeFileSync(`${os.homedir()}/.csutilrc`, JSON.stringify(config));
                     console.log(`代码为${argv.code}的课程已添加`);
                 }
             } else {

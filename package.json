@@ -1,6 +1,6 @@
 {
   "name": "ucas-csutil",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "UCAS course selecting utilies",
   "main": "csutil",
   "bin": {

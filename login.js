@@ -340,7 +340,7 @@ function loginPromise(userName, password, path) {
 function loginSync() {
     let config;
     try {
-        config = JSON.parse(fs.readFileSync(`${os.homedir()}/.config`));
+        config = JSON.parse(fs.readFileSync(`${os.homedir()}/.csutilrc`));
     } catch (e) {
         console.log('错误：需要初始化');
         return;
@@ -349,7 +349,7 @@ function loginSync() {
         console.log('用法：csutil login');
     } else {
         if (config.userName) {
-            loginPromise(config.userName, config.password, `${os.homedir()}/.params`).then(
+            loginPromise(config.userName, config.password, `${os.homedir()}/.csutilparams`).then(
                 (params) => {
                     console.log('登录成功。 ');
                     console.log('JSESSIONID, sepuser和选课URL已保存。');
