@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const paths = require('../config/paths');
+const init = require('../lib/init');
+const httpd = require('../httpd/httpd.js');
+const net = require('net');
+const http = require('http');
+const opn = require('opn');
+
+let ip = '127.0.0.1';
+let port = 9510;
+
+
+function validPort(portString) {
+    try {
+        let port = parseInt(portString);
+        return port >= 1 && port <= 65535;
+    } catch (e) {
+        return false;
+    }
+}
+
+switch (process.argv[2]) {
+    case '-h': case '--help': case '-?':
+        console.log('UCAS选课实用工具(GUI)\n');
+        console.log('用法:\n    gcsutil [[IPv4地址:]<TCP端口号>]\n');
+        console.log(`不指定任何参数时，默认监听${ip}:${port}。\n`);
+        console.log('向 azfmj22@hotmail.com 发送邮件报告bug。');
+        break;
+
+    default:
+        let socket = process.argv[2];
+        if (socket) {
+            if (socket.split(':').length === 1) {
+                if (validPort(socket)) {
+                    port = parseInt(socket);
+                } else {
+                    console.log('TCP端口号范围: 1-65535');
+                }
+            } else if (socket.split(':').length === 2) {
+                if (net.isIPv4(socket.split(':')[0])
+                    && validPort(socket.split(':')[1])) {
+                    ip = socket.split(':')[0];
+                    port = parseInt(socket.split(':')[1]);
+                } else {
+                    if (!net.isIPv4(socket.split(':')[0])) {
+                        console.log('IPv4地址格式不正确, 采用默认IP地址127.0.0.1');
+                    }
+                    if (!validPort(socket.split(':')[1])) {
+                        console.log('TCP端口号范围: 1-65535, 采用默认端口号9510');
+                    }
+                }
+            } else {
+                console.log('参数格式不正确, 采用默认IP地址127.0.0.1和默认端口号9510');
+            }
+        }
+        break;
+}
+
+
+
+if (!fs.existsSync(paths.cs.rc)) {
+    init();
+}
+
+http.createServer(httpd).listen({
+    host: ip,
+    port: port
+}, () => {
+    console.log(`在 ${ip}:${port} 启动HTTP服务 ...`);
+    opn(`http://${ip}:${port}`);
+});
+
+

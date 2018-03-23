@@ -1,4 +1,4 @@
-## UCAS 选课系统实用工具
+## UCAS 选课实用工具
 
 ### 安装
 1. 安装node.js：
@@ -24,7 +24,16 @@
 	npm install -g ucas-csutil
 	```
 
-### 使用
+### GUI工具使用
+1. 执行如下命令启动GUI：
+
+	```bash
+	gcsutil
+	```
+
+2. 按提示操作
+
+### 命令行工具使用
 1. 初始化
 
 	```bash
@@ -45,7 +54,7 @@
 	```bash
 	csutil login
 	```
-5. 查询选课信息并适时提交选课
+5. 查询选课信息并适时提交选课 (默认查询间隔为1分钟)
 
 	```bash
 	csutil query

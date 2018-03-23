@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
-const init = require('./init');
-const login = require('./login');
-const query = require('./query');
-const configure = require('./config');
-const search = require('./search');
-const add = require('./add');
-const list = require('./list');
-const remove = require('./remove');
-
+const init = require('../lib/init');
+const login = require('../lib/login');
+const query = require('../lib/query');
+const configure = require('../lib/config');
+const search = require('../lib/search');
+const add = require('../lib/add');
+const list = require('../lib/list');
+const remove = require('../lib/remove');
 
 
 switch (process.argv[2]) {
@@ -45,7 +44,7 @@ switch (process.argv[2]) {
         break;
 
     default:
-        console.log('UCAS选课系统实用工具\n');
+        console.log('UCAS选课实用工具\n');
         console.log('用法:\n    csutil <命令> [参数]\n');
         console.log('可用的命令：');
         console.log('    init\t初始化(执行其他命令之前必须先初始化)');
@@ -60,4 +59,3 @@ switch (process.argv[2]) {
         console.log('向 azfmj22@hotmail.com 发送邮件报告bug。');
         break;
 }
-
